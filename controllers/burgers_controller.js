@@ -6,8 +6,35 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 
-// CREATE ALL ROUTES & LOGIC HERE
+// ROUTES
+router.get("/", function(req, res) {
+    burger.selectAll(function(data) {
+      var hbsObject = {
+        burgers: data
+      };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
+    });
+  });
 
+  router.post("/api/burgers", function(req, res) {
+    burger.insertOne("name", req.body.name, function(result) {
+      // Send back the ID of the burger
+      res.json({ id: result.insertId });
+    });
+  });
+
+  router.put("/api/burgers/:id", function(req, res) {
+    var eaten = "id = " + req.params.id;
+
+    console.log("devoured", devoured);
+  
+    burger.update({
+      devoured: req.body.devoured
+    }, eaten, function(result) {
+      res.status(200).end();
+    });
+  });
 
 // Export routes for server.js to use.
 module.exports = router;

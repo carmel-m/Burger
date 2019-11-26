@@ -1,20 +1,24 @@
 // Import the ORM to create functions that will interact with the database.
 var orm = require("../config/orm.js");
 
-// FIX THESE
+// Burger object
 var burger = {
   selectAll: function(cb) {
-    orm.all("burgers", function(res) {
+    orm.selectAll("burgers", function(res) {
       cb(res);
     });
   },
 
-  insertOne: function(cb) {
-
+  insertOne: function(name, cb) {
+    orm.insertOne("burgers", name, function(res) {
+      cb(res);
+    });
   },
 
-  updateOne: function(cb) {
-      
+  updateOne: function(id, cb) {
+    orm.updateOne("burgers", id, function(res) {
+      cb(res);
+    });
   }
 };
 

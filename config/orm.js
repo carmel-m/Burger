@@ -1,6 +1,6 @@
 var connection = require("../config/connection.js");
 
-// FIX ALL THESE FUNCTIONS - DON'T REALLY UNDERSTAND
+
 var orm = {
   selectAll: function(cb) {
     var queryString = "SELECT * FROM burgers";
