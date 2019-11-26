@@ -1,14 +1,9 @@
 var connection = require("../config/connection.js");
 
-//  Do I need a helper function to convert object key/value pairs to SQL syntax?
-//  Ditto question mark function
-
-
-
 // FIX ALL THESE FUNCTIONS - DON'T REALLY UNDERSTAND
 var orm = {
-  selectAll: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
+  selectAll: function(cb) {
+    var queryString = "SELECT * FROM burgers";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -17,8 +12,8 @@ var orm = {
     });
   },
 
-  insertOne: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+  insertOne: function(name, cb) {
+    var queryString = "INSERT INTO burgers (burger_name) VALUES ('" + name + "')";
 
     connection.query(queryString, function(err, result) {
       if (err) {
@@ -28,11 +23,9 @@ var orm = {
     });
   },
 
-  updateOne: function(table, objColVals, condition, cb) {
+  updateOne: function(id, cb) {
     var queryString =
-      "UPDATE " + table + "SET " + objColVals + " WHERE " + condition;
-
-    console.log(queryString);
+      "UPDATE burgers SET devoured = true WHERE id = " + id;
 
     connection.query(queryString, function(err, result) {
       if (err) {
