@@ -22,16 +22,13 @@ $(function() {
       );
     });
   
-    $(".create-form").on("submit", function(event) {
+    $("#order-burger").on("submit", function(event) {
 
       event.preventDefault();
   
       var newBurger = {
-        burger_name: $("#burger").val().trim(),
-
-        // FIX THIS
-        // sleepy: $("[name=sleepy]:checked").val().trim()
-
+        // burger_name: $("#burger").val().trim(),
+        burger_name: $("#burger-name").val().trim()
       };
   
       // Send the POST request.
