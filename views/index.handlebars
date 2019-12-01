@@ -19,19 +19,9 @@
   </div>
 
   <div class="row">
+
     <div class="col-sm-6">
       <h2>Burgers that have not been eaten</h2>
-      <ul>
-        {{#each burgers}}
-        {{#if devoured}}
-        {{> burgers/burger-block devoured=false}}
-        {{/if}}
-        {{/each}}
-      </ul>
-    </div>
-    
-    <div class="col-sm-6">
-      <h2>Burgers that have been eaten</h2>
       <ul>
         {{#each burgers}}
         {{#unless devoured}}
@@ -41,8 +31,18 @@
       </ul>
     </div>
 
-    
+    <div class="col-sm-6">
+      <h2>Burgers that have been eaten</h2>
+      <ul>
+        {{#each burgers}}
+        {{#if devoured}}
+        {{> burgers/burger-block devoured=false}}
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
 
+  
 
   </div>
 </div>

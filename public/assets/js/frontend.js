@@ -1,6 +1,5 @@
 // on click events for adding new burgers and changing devoured status
 
-
 $(function() {
     $(".change-status").on("click", function(event) {
       var id = $(this).data("id");
@@ -31,7 +30,7 @@ $(function() {
         burger_name: $("#burger").val().trim(),
 
         // FIX THIS
-        // devoured: $("[name=sleepy]:checked").val().trim()
+        // sleepy: $("[name=sleepy]:checked").val().trim()
 
       };
   
