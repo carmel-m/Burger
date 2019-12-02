@@ -2,9 +2,10 @@
 
 $(function() {
     $(".change-status").on("click", function(event) {
+        event.preventDefault();
       var id = $(this).data("id");
       var newStatus = $(this).data("newstatus");
-  
+  console.log(id);
       var newEatenStatus = {
         devoured: newStatus
       };
@@ -12,7 +13,9 @@ $(function() {
       // Send the PUT request.
       $.ajax("/api/burgers/" + id, {
         type: "PUT",
-        data: newEatenStatus
+        data: JSON.stringify(newEatenStatus),
+        dataType: 'json',
+        contentType: 'application/json'
       }).then(
         function() {
           console.log("changed eaten status to", newStatus);
@@ -22,7 +25,7 @@ $(function() {
       );
     });
   
-    $("#order-burger").on("submit", function(event) {
+    $(".create-form").on("submit", function(event) {
 
       event.preventDefault();
   

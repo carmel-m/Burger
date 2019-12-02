@@ -28,14 +28,14 @@ var orm = {
     });
   },
 
-  updateOne: function(eaten, cb) {
+  updateOne: function(eaten, condition, cb) {
     var queryString =
       // "UPDATE burgers SET devoured = true WHERE id = " + id;
 
       // "UPDATE burgers SET devoured = true WHERE id = " + id;
 
-      "UPDATE burgers SET devoured = true WHERE " + eaten;
-
+      "UPDATE burgers SET devoured = " + eaten.devoured + " WHERE " + condition;
+console.log(eaten.devoured);
       console.log(queryString)
 
     connection.query(queryString, function(err, result) {
