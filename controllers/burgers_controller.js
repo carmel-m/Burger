@@ -33,16 +33,9 @@ router.put("/api/burgers/:id", function(req, res) {
       devoured: req.body.devoured
     },
     condition,
-    function(result) {
-      console.log("success");
-      if (result.changedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404
-        console.log("failed");
-        return res.status(404).end();
-      } else {
-          console.log("working");
-        return res.status(200).end();
-      }
+    function() {
+        console.log("working");
+        res.status(200).end();
     }
   );
 });
